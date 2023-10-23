@@ -1,9 +1,6 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import {List, ListItem, ListItemButton, ListItemText} from '@mui/material';
-import {useNavigate} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 const NAV_ITEMS = [
 	{
@@ -25,29 +22,51 @@ const NAV_ITEMS = [
 ];
 
 const HeaderBar = () => {
-	const navigate = useNavigate();
-
-	const onChangeMenu = (href: string) => {
-		navigate(href);
-	};
+	const { pathname } = useLocation();
 
 	return (
-		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="static">
-				<Toolbar>
-					<List sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end'}}>
-						{NAV_ITEMS.map(({name, href}) => (
-							<ListItem key={name} onClick={() => onChangeMenu(href)} disablePadding>
-								<ListItemButton sx={{ textAlign: 'center' }}>
-									<ListItemText primary={name} />
-								</ListItemButton>
-							</ListItem>
-						))}
-					</List>
-				</Toolbar>
-			</AppBar>
-		</Box>
+		<Header>
+			{NAV_ITEMS.map(({name, href}) => {
+				return (
+					<Box
+						key={name}
+						href={href}
+						$active={pathname === href}
+					>
+						{name}
+					</Box>
+				)
+			})}
+		</Header>
 	);
 }
+
+interface BoxProps {
+	$active: boolean;
+}
+
+const Box = styled.a<BoxProps>`
+	${(props) => 
+		props.$active && 
+		css`background-color: #efefef`};
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	padding: 0 15px;
+`
+
+const Header = styled.header`
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	background: #ffffff;
+	display: flex;
+	width: 100%;
+	justify-content: flex-end;
+	align-content: center;
+	height: 55px;
+	padding: 4px 15px;
+	border-bottom: 1px solid #efefef;
+`;
 
 export default HeaderBar;

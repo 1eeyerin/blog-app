@@ -1,9 +1,14 @@
 import React from 'react';
+import PostList from '../../components/PostList';
+import Wrapper from '../../components/Wrapper';
 
 const Home = () => {
-    return (
-        <div></div>
-    )
-}
+  return (
+    <Wrapper>
+      <PostList hasNavigation />
+    </Wrapper>
+  );
+};
+
 
 export default Home;
