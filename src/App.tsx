@@ -12,7 +12,11 @@ const GlobalStyle = createGlobalStyle`
 
   button, a {
     all: unset;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     cursor: pointer;
+    text-align: center;
   }
 
   li {
