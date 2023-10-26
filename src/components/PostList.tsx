@@ -1,15 +1,15 @@
-import UserProfile from './UserProfile';
-import { Link } from 'react-router-dom';
-import React from 'react';
-import styled from 'styled-components';
+import UserProfile from "./UserProfile";
+import { Link } from "react-router-dom";
+import React from "react";
+import styled from "styled-components";
 
 const PostList = ({ hasNavigation = true }) => {
   return (
     <>
       {hasNavigation && (
         <Navigation>
-          <li><NavLink href='#' $active>전체</NavLink></li>
-          <li><NavLink href='#'>나의 글</NavLink></li>
+          <li><NavLink to="#" $active>전체</NavLink></li>
+          <li><NavLink to="#">나의 글</NavLink></li>
         </Navigation>
       )}
       <List>
@@ -17,20 +17,20 @@ const PostList = ({ hasNavigation = true }) => {
           return (
             <li key={num}>
               <ProfileBox>
-                <UserProfile name='yerin lee' date='2023-10-23' />
+                <UserProfile name="yerin lee" date="2023-10-23" />
               </ProfileBox>
-              <Link to='/posts/12'>
+              <Link to="/posts/12">
                 <Subject>제목1</Subject>
                 <Content>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis eum exercitationem, iste
                   iusto
                   libero magnam
                   magni nesciunt officia optio quia, quibusdam repellat saepe sequi, temporibus ullam? Eius perferendis
                   perspiciatis quasi?</Content>
-                <PostUtilBox>
-                  <UtilButton href='#'>수정</UtilButton>
-                  <UtilButton href='#'>삭제</UtilButton>
-                </PostUtilBox>
               </Link>
+              <PostUtilBox>
+                <UtilButton to="#">수정</UtilButton>
+                <UtilButton to="#">삭제</UtilButton>
+              </PostUtilBox>
             </li>
           );
         })}
@@ -47,9 +47,9 @@ interface NavLinkProps {
   $active?: boolean;
 }
 
-const NavLink = styled.a<NavLinkProps>`
+const NavLink = styled(Link)<NavLinkProps>`
   font-weight: bold;
-  color: ${(props) => props.$active ? '#222' : '#bbb'}
+  color: ${(props) => props.$active ? "#222" : "#bbb"}
 `;
 
 const Navigation = styled.ul`
@@ -64,11 +64,13 @@ const Navigation = styled.ul`
 const Subject = styled.strong`
   display: block;
   font-size: 18px;
+  text-align: left;
 `;
 
 const Content = styled.p`
   color: #666;
   margin-top: 10px;
+  text-align: left;
 `;
 
 const List = styled.ul`
@@ -86,7 +88,7 @@ const PostUtilBox = styled.div`
   margin-top: 15px;
 `;
 
-const UtilButton = styled.a`
+const UtilButton = styled(Link)`
   font-size: 13px;
   color: #bbb;
 `;

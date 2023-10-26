@@ -1,18 +1,19 @@
-import React from 'react';
-import Wrapper from '../../../components/Wrapper';
-import UserProfile from '../../../components/UserProfile';
-import styled from 'styled-components';
+import React from "react";
+import Wrapper from "components/Wrapper";
+import UserProfile from "components/UserProfile";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const PostDetail = () => {
   return (
     <Wrapper>
       <h1>Firebase란?</h1>
       <UserProfileBox>
-        <UserProfile name='yerin lee' date='2023-10-23' />
+        <UserProfile name="yerin lee" date="2023-10-23" />
       </UserProfileBox>
       <PostUtilBox>
-        <UtilButton href='#'>수정</UtilButton>
-        <UtilButton href='#'>삭제</UtilButton>
+        <UtilButton to="#">수정</UtilButton>
+        <UtilButton to="#">삭제</UtilButton>
       </PostUtilBox>
       <Content>
         firebase가 무엇일까요?
@@ -20,7 +21,7 @@ const PostDetail = () => {
       <Subject>
         댓글입력
       </Subject>
-      <Textarea placeholder='댓글을 입력해주세요.' />
+      <Textarea placeholder="댓글을 입력해주세요." />
       <ButtonArea>
         <Button>입력</Button>
       </ButtonArea>
@@ -29,7 +30,7 @@ const PostDetail = () => {
         {[...Array(10)].map(() => {
           return (
             <CommentItem>
-              <UserProfile name='yerin lee' date='2023-10-23' />
+              <UserProfile name="yerin lee" date="2023-10-23" />
               <UserComment>안녕하세요</UserComment>
             </CommentItem>
           );
@@ -104,7 +105,7 @@ const PostUtilBox = styled.div`
   margin-top: 15px;
 `;
 
-const UtilButton = styled.a`
+const UtilButton = styled(Link)`
   font-size: 13px;
   color: #bbb;
 `;

@@ -1,21 +1,39 @@
-import React from 'react';
-import styled from 'styled-components';
-import PostList from '../../components/PostList';
-import Wrapper from '../../components/Wrapper';
+import React, { useContext } from "react";
+import styled from "styled-components";
+import PostList from "components/PostList";
+import Wrapper from "components/Wrapper";
+import { toast } from "react-toastify";
+import { app } from "firebaseApp";
+import { getAuth, signOut } from "firebase/auth";
+import { useAuthContext } from "context/AuthContext";
+
+const onSignOut = async () => {
+  try {
+    const auth = getAuth(app);
+    await signOut(auth);
+    toast.success("로그아웃 되었습니다.");
+
+  } catch (error: any) {
+    console.log(error);
+    toast.error(error?.code);
+  }
+};
 
 const Profile = () => {
+  const { user } = useAuthContext();
+
   return (
     <Wrapper>
       <ProfileContainer>
         <ProfileGroup>
           <ProfileImage> </ProfileImage>
           <div>
-            <UserId>@yerin</UserId>
-            <UserName>yerin lee</UserName>
+            <UserId>{user?.email}</UserId>
+            <UserName>{user?.displayName || "사용자"}</UserName>
           </div>
         </ProfileGroup>
         <UtilBox>
-          <UtilButton type='button'>
+          <UtilButton type="button" onClick={onSignOut}>
             로그아웃
           </UtilButton>
         </UtilBox>

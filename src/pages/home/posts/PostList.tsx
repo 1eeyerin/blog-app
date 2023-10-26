@@ -1,6 +1,6 @@
-import React from 'react';
-import PostListComponent from '../../../components/PostList';
-import Wrapper from '../../../components/Wrapper';
+import React from "react";
+import PostListComponent from "components/PostList";
+import Wrapper from "components/Wrapper";
 
 const PostList = () => {
   return (

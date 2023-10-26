@@ -1,30 +1,40 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
-import App from '../App';
-import { PostDetail, PostEdit, PostList, PostNew } from '../pages/home/posts';
-import { Login } from '../pages/login';
-import { Profile } from '../pages/profile';
-import { Signup } from '../pages/signup';
-import { Home } from '../pages/home';
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Home } from "../pages/home";
+import Layout from "Layout";
+import { Profile } from "pages/profile";
+import { PostDetail, PostEdit, PostList, PostNew } from "pages/home/posts";
+import { Login } from "pages/login";
+import { Signup } from "pages/signup";
 
-export default createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    children: [
-      { path: '', element: <Home /> },
-      {
-        path: 'posts',
-        children: [
-          { path: '', element: <PostList /> },
-          { path: ':id', element: <PostDetail /> },
-          { path: 'new', element: <PostNew /> },
-          { path: 'edit/:id', element: <PostEdit /> }
-        ]
-      },
-      { path: 'profile', element: <Profile /> },
-      { path: 'login', element: <Login /> },
-      { path: 'signup', element: <Signup /> }
-    ]
-  },
-  { path: '*', element: <Navigate replace to='/' /> }
-]);
+const Router = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          {isAuthenticated ? (
+            <>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/posts">
+                <Route path="" element={<PostList />} />
+                <Route path=":id" element={<PostDetail />} />
+                <Route path="new" element={<PostNew />} />
+                <Route path="edit/:id" element={<PostEdit />} />
+              </Route>
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </>
+          ) : (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="*" element={<Navigate to="/login" replace />} />
+            </>
+          )}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default Router;

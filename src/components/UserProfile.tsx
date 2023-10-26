@@ -1,6 +1,6 @@
-import dayjs from 'dayjs';
-import React from 'react';
-import styled from 'styled-components';
+import dayjs from "dayjs";
+import React from "react";
+import styled from "styled-components";
 
 interface UserProfileProps {
   name: string,
@@ -8,7 +8,7 @@ interface UserProfileProps {
 }
 
 const UserProfile = ({ name, date }: UserProfileProps) => {
-  const time = dayjs(date).format('YYYY.MM.DD d');
+  const time = dayjs(date).format("YYYY.MM.DD");
 
   return (
     <ProfileGroup>
