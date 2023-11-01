@@ -118,7 +118,6 @@ const PostForm = () => {
     }
   }, [navigate, post, user]);
 
-
   return (
     <FormWrapper onSubmit={onSubmit}>
       <TextField
@@ -133,7 +132,7 @@ const PostForm = () => {
         label="카테고리"
         id="category"
         name="category"
-        defaultValue={category}
+        value={category}
         onChange={onChange}
         categories={CATEGORIES}
       />
