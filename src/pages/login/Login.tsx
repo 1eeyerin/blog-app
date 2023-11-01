@@ -33,10 +33,10 @@ const Login = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
-      target: { id, value }
+      target: { name, value }
     } = e;
 
-    if (id === "email") {
+    if (name === "email") {
       setEmail(value);
 
       const validRegex =
@@ -49,7 +49,7 @@ const Login = () => {
       }
     }
 
-    if (id === "password") {
+    if (name === "password") {
       setPassword(value);
 
       if (value?.length < 8) {
@@ -67,12 +67,14 @@ const Login = () => {
         <TextField
           label="이메일"
           id="email"
+          name="email"
           type="email"
           onChange={onChange}
         />
         <TextField
           label="비밀번호"
           id="password"
+          name="password"
           type="password" onChange={onChange}
         />
         <LinkButton to="/signup">계정이 없으신가요?</LinkButton>

@@ -1,6 +1,6 @@
-import React from 'react';
-import Wrapper from '../../../components/Wrapper';
-import PostForm from '../../../components/PostForm';
+import React from "react";
+import Wrapper from "components/Wrapper";
+import PostForm from "components/PostForm";
 
 const PostEdit = () => {
   return (

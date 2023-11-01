@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 
-interface TextFieldProps extends React.HTMLAttributes<HTMLInputElement> {
+interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   id: string;
   type?: React.HTMLInputTypeAttribute;

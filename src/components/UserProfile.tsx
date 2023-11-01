@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import React from "react";
 import styled from "styled-components";
 
@@ -8,13 +7,11 @@ interface UserProfileProps {
 }
 
 const UserProfile = ({ name, date }: UserProfileProps) => {
-  const time = dayjs(date).format("YYYY.MM.DD");
-
   return (
     <ProfileGroup>
       <ProfileImage> </ProfileImage>
       <UserName>{name}</UserName>
-      <Date>{time}</Date>
+      <Date>{date}</Date>
     </ProfileGroup>
   );
 };
@@ -22,7 +19,7 @@ const UserProfile = ({ name, date }: UserProfileProps) => {
 const ProfileGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 `;
 
 const ProfileImage = styled.div`
@@ -33,7 +30,7 @@ const ProfileImage = styled.div`
 `;
 
 const UserName = styled.p`
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
 `;
 

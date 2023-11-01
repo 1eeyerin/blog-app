@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import PostList from "components/PostList";
 import Wrapper from "components/Wrapper";
@@ -38,7 +38,7 @@ const Profile = () => {
           </UtilButton>
         </UtilBox>
       </ProfileContainer>
-      <PostList hasNavigation={false} />
+      <PostList hasNavigation={false} defaultTab="my" />
     </Wrapper>
   );
 };

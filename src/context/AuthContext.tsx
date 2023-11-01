@@ -6,7 +6,7 @@ interface AuthProps {
   children: ReactNode;
 }
 
-interface AuthUserType {
+export interface AuthUserType {
   user: User | null;
 }
 

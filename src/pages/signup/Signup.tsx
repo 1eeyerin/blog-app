@@ -16,7 +16,7 @@ const Signup = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (error) {
       return;
     }
@@ -35,24 +35,22 @@ const Signup = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
-      target: { id, value }
+      target: { name, value }
     } = e;
 
-    if (id === "email") {
+    if (name === "email") {
       setEmail(value);
       const validRegex =
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-      console.log("@@", value);
       if (!value?.match(validRegex)) {
-        console.log("@@");
         setError("이메일 형식이 올바르지 않습니다.");
       } else {
         setError("");
       }
     }
 
-    if (id === "password") {
+    if (name === "password") {
       setPassword(value);
 
       if (value?.length < 8) {
@@ -64,7 +62,7 @@ const Signup = () => {
       }
     }
 
-    if (id === "password_confirm") {
+    if (name === "password_confirm") {
       setPasswordConfirm(value);
 
       if (value?.length < 8) {
@@ -84,18 +82,21 @@ const Signup = () => {
         <TextField
           label="이메일"
           id="email"
+          name="email"
           type="email"
           onChange={onChange}
         />
         <TextField
           label="비밀번호"
           id="password"
+          name="password"
           type="password"
           onChange={onChange}
         />
         <TextField
           label="비밀번호 확인"
           id="password_confirm"
+          name="password_confirm"
           type="password"
           onChange={onChange}
         />

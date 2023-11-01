@@ -1,15 +1,16 @@
 import styled from "styled-components";
+import React from "react";
 
-interface TextAreaFieldProps {
+interface TextAreaFieldProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   id: string;
 }
 
-const TextAreaField = ({ label, id }: TextAreaFieldProps) => {
+const TextAreaField = ({ label, id, ...props }: TextAreaFieldProps) => {
   return (
     <div>
       <Label htmlFor={id}>{label}</Label>
-      <TextArea id={id} />
+      <TextArea id={id} {...props} />
     </div>
   );
 };
